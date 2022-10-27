@@ -3,11 +3,13 @@
 #include<time.h>
 #include<stdlib.h>
 
-void putDash(int);
+// By @mihirgala on github
+
+void putDash(int); // prints '-' or any symbol or anything you would like just change the code the amount of times put in the args
 
 int endLoop(); // returns a value that will be used in main to control the loop
 
-void putScore(int *,int *);
+void putScore(int *,int *); // Just a function to display two pointers as score usually passed through multiple functions like end loop for e.g if score reaches 10 end the loop
 
 
 int dice(int);
@@ -39,14 +41,14 @@ int endLoop(){
     printf("\n\nWould you like to continue\n[y] YES  [n] NO (Exit game)\n\n-> : ");
     scanf("%s",&c);
     if( c =='n' || c == 'N'){
-        return 0;
+        return 0; // If c then loop ends if you make your loop condition x!=0
     }
     else if( c =='y' || c =='Y'){
-        return 1;
+        return 1; // Can be anything depending on your loop I use 1 personally as it's easier for me to understand.
     }
     else{
         printf("Error Invalid Arguments");
-        endLoop();
+        endLoop(); // Function loop if user enters anything other than  y or n
     }
 }
 
@@ -56,6 +58,6 @@ void putScore(int *uscore,int *cscore){
 }
 
 int dice(int size){
-    srand(time(NULL));
-    return ((rand() % size)+1);
+    srand(time(NULL)); // In c theres nothing fully random so you have to put a seed that changes over and over which can be used by time function.
+    return ((rand() % size)+1); // returns a random number between 1 to the given size.
 }
