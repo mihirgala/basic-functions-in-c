@@ -9,18 +9,21 @@ int endLoop(); // returns a value that will be used in main to control the loop
 
 void putScore(int *,int *);
 
+
 int dice(int);
 
 void main(){
-    int dieSize=6,userScore,compScore,loop=1;
+    int dieSize=6,userScore=0,compScore=0,loop=1;
     do
     {
+        system("cls");
         putDash(100);
-        printf("Mihir rolled a %d",dice(dieSize));
+        printf("Mihir rolled a %d\n",dice(dieSize));
+        putScore(&userScore,&compScore);
         putDash(100);
-        loop=endloop();
+        loop=endLoop();
     } while (loop!=0);
-    
+    getch();
 }
 
 void putDash(int size){
@@ -41,3 +44,18 @@ int endLoop(){
     else if( c =='y' || c =='Y'){
         return 1;
     }
+    else{
+        printf("Error Invalid Arguments");
+        endLoop();
+    }
+}
+
+void putScore(int *uscore,int *cscore){
+    printf("Your Score is : %d\n",*uscore);
+    printf("Computer Score is : %d\n",*cscore);
+}
+
+int dice(int size){
+    srand(time(NULL));
+    return ((rand() % size)+1);
+}
